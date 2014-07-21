@@ -150,7 +150,7 @@ def config_to_dict():
 
 
 def write_config(path=None):
-    path = os.path.join(os.environ["HOME"], ".fireworks",
+    path = os.path.join(os.path.expanduser('~'), ".fireworks",
                         'FW_config.yaml') if path is None else path
     with open(path, "w") as f:
         yaml.dump(config_to_dict(), f)

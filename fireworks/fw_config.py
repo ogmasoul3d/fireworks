@@ -77,6 +77,8 @@ TRACKER_LINES = 25  # number of lines to return in Tracker
 
 SORT_FWS = ''  # sort equal priority FWs? "FILO" or "FIFO".
 
+HOME_FOLDER = os.path.expanduser('~')
+
 
 def override_user_settings():
     module_dir = os.path.dirname(os.path.abspath(__file__))
@@ -84,7 +86,7 @@ def override_user_settings():
 
     config_paths = []
 
-    test_paths = [os.getcwd(), os.path.join(os.environ["HOME"], ".fireworks"), root_dir]
+    test_paths = [os.getcwd(), os.path.join(HOME_FOLDER, ".fireworks"), root_dir]
 
     for p in test_paths:
         fp = os.path.join(p, 'FW_config.yaml')
@@ -96,7 +98,7 @@ def override_user_settings():
         config_paths.append(os.environ["FW_CONFIG_FILE"])
 
     config_paths = config_paths or [os.path.join(
-        os.environ["HOME"], ".fireworks", 'FW_config.yaml')]
+        HOME_FOLDER, ".fireworks", 'FW_config.yaml')]
 
     if len(config_paths) > 1:
         print("Found many potential paths for {}: {}\nChoosing: {}"
